@@ -1,0 +1,41 @@
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev
+  main:
+#    允许循环依赖
+    allow-circular-references: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xd_wanju?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 13240564962
+  jackson:
+    date-format: yyyy-MM-dd
+#    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+#     HH:mm:ss
+    time-zone: GMT+8
+
+#mybatis-plus配置
+mybatis-plus:
+  #配置Mapper映射文件
+  mapper-locations: classpath:mapper/*.xml
+  # 配置Mybatis数据返回类型别名（默认别名为类名）
+  type-aliases-package: com.code.entity
+  configuration:
+    #sql日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+#knife4j配置
+knife4j:
+  enable: true
+  openapi:
+    title: 接口文档
+    description: 接口测试
+    email: biyesheji@foxmail.com
+    version: 1.0.0
+    license: Apache 2.0
+    licenseUrl: http://www.apache.org/licenses/LICENSE-2.0
